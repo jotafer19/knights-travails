@@ -5,24 +5,6 @@ class Node {
     }
 }
 
-class Queue {
-    constructor() {
-        this.data = [];
-    }
-
-    enqueue(element) {
-        this.data.push(element);
-    }
-
-    dequeue() {
-        return this.data.shift();
-    }
-
-    isEmpty() {
-        return this.data.length <= 0;
-    }
-}
-
 function isVisited(node, array) {
     array.forEach(element => {
         if (element[0] === node.data[0] && element[1] === node.data[1]) return true;
@@ -65,24 +47,24 @@ function knightMoves(start, end, queue = [new Node(start)], visitedNodes = [star
 
 function getMoves(start, end) {
     const movePath = knightMoves(start, end).path;
-    console.log(`You made it in ${movePath.length} moves! Here is your path:`)
+    console.log(`You made it in ${movePath.length - 1} moves! Here is your path:`)
     movePath.forEach(move => console.log(move));
 }
 
 getMoves([0, 0], [3, 3]);
-// You made it in 3 moves! Here is your path:
+// You made it in 2 moves! Here is your path:
 // [ 0, 0 ]
 // [ 1, 2 ]
 // [ 3, 3 ]
 
 getMoves([3, 3], [0, 0]);
-// You made it in 3 moves! Here is your path:
+// You made it in 2 moves! Here is your path:
 // [ 3, 3 ]
 // [ 2, 1 ]
 // [ 0, 0 ]
 
 getMoves([0, 0], [7, 7]);
-// You made it in 7 moves! Here is your path:
+// You made it in 6 moves! Here is your path:
 // [ 0, 0 ]
 // [ 1, 2 ]
 // [ 2, 4 ]
@@ -92,7 +74,7 @@ getMoves([0, 0], [7, 7]);
 // [ 7, 7 ]
 
 getMoves([3, 3], [4, 3]);
-// You made it in 4 moves! Here is your path:
+// You made it in 3 moves! Here is your path:
 // [ 3, 3 ]
 // [ 4, 5 ]
 // [ 6, 4 ]
